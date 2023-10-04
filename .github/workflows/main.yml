@@ -1,0 +1,22 @@
+name: Build and test                                      
+on:                                                       
+  push:                                                     
+    branches:                                               
+      - master
+jobs:                                                     
+  build:                                                    
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code                                  
+        uses: actions/checkout@v2                             
+      - name: Set up JDK      
+        uses: actions/setup-java@v2
+        with:
+          java-version: "17"
+          distribution: temurin                             
+      - name: Test
+        run: mvn test
+      - name: Package
+        run: mvn clean package
+
+
