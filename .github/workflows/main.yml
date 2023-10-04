@@ -19,4 +19,17 @@ jobs:
       - name: Package
         run: mvn clean package
 
+      - name: Log in to DockerHub Account
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.MY_SECRET_USERNAME }}
+          password: ${{ secrets.MY_SECRET_PASSWORD }}
+
+      - name: Build and push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: rohitballer/actiondemov1.0.0
+
 
