@@ -25,11 +25,12 @@ jobs:
           username: ${{ secrets.MY_SECRET_USERNAME }}
           password: ${{ secrets.MY_SECRET_PASSWORD }}
 
-      - name: Build and push Docker Image
+      - name: Build and a push Docker Image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           tags: rohitballer/actiondemov1.0.0
+
 
 
